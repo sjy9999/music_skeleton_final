@@ -1,7 +1,1 @@
 
-Id: 999AAAAA!!, Name: chengji, Address: Melbourne|Victoria|Australia, Birthday: 01-01-2000, Bio: He is a very good singer, Occupations: [Player, BigBoss], Genres: [Pop, Classical], Awards: [2022, Best Song Written]
-Id: 999AAAAA!!, Name: chengji, Address: Melbourne|Victoria|Australia, Birthday: 01-01-2000, Bio: He is a very good singer, Occupations: [Singer, Songwriter], Genres: [Pop, Classical], Awards: [2022, Best Song Written]
-Id: 999AAAAA!!, Name: chengji, Address: Melbourne|Victoria|Australia, Birthday: 01-01-2000, Bio: He is a very good singer, Occupations: [Singer, Songwriter], Genres: [Pop, Classical], Awards: [2022, Best Song Written]
-Id: 999AAAAA!!, Name: chengji, Address: Melbourne|Victoria|Australia, Birthday: 01-01-2000, Bio: He is a very good singer, Occupations: [SongWriter, PianoPlayer], Genres: [Pop, Classical], Awards: [2022, Best Song Written]
-Id: 999AAAAA!!, Name: chengji, Address: Melbourne|Victoria|Australia, Birthday: 01-01-2000, Bio: He is a very good singer, Occupations: [Singer, Songwriter], Genres: [Pop, Classical], Awards: [2022, Best Song Written]
-Id: 999AAAAA!!, Name: chengji, Address: Melbourne|Victoria|Australia, Birthday: 01-01-2000, Bio: He is a very good singer, Occupations: [Singer, SongDancer], Genres: [Pop, Classical], Awards: [2022, Best Song Written]

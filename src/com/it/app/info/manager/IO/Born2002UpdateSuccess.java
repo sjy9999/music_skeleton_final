@@ -65,10 +65,11 @@ public class Born2002UpdateSuccess {
     public static boolean canChangeOccupation(String birthDate, List<String> currentOccupations, List<String> newOccupations) {
         // birthDate    DD-MM-YYYY
         int birthYear = Integer.parseInt(birthDate.split("-")[2]);
-
+// If the person was born before the year 2000
         if (birthYear < 2000) {
             return currentOccupations.equals(newOccupations);
         }
+        // If the person was born in the year 2000 or later, they can change occupations
         return true;
     }
 
@@ -79,7 +80,7 @@ public class Born2002UpdateSuccess {
         ArrayList<String> genres = new ArrayList<>(Arrays.asList("Pop", "Classical"));
         ArrayList<String> awards = new ArrayList<>(Arrays.asList("2022, Best Song Written"));
         Born2002UpdateSuccess.Artist artist = new Born2002UpdateSuccess.Artist("999AAAAA!!", "chengji", "Melbourne|Victoria|Australia",
-                "01-01-2000", "He is a very good singer", occupations, genres, awards);
+                "01-01-2002", "He is a very good singer", occupations, genres, awards);
 
         Born2002UpdateSuccess Born2002UpdateSuccess = new Born2002UpdateSuccess();
         Born2002UpdateSuccess.updateArtist(artist);
@@ -113,24 +114,27 @@ public class Born2002UpdateSuccess {
     }
 
     public static boolean isValidArtistID(String artistID) {
-        // 10
+        // The artist ID should be of length 10
         if (artistID.length() != 10) {
             return false;
         }
-        // 5-9
+        // The first three characters
+        // digits between 5 and 9
         for (int i = 0; i < 3; i++) {
             char digit = artistID.charAt(i);
             if (digit < '5' || digit > '9') {
                 return false;
             }
         }
-        // 4-8
+        // from 4th to 8th position should be uppercase letters between 'A' and 'Z'
         for (int i = 3; i < 8; i++) {
             char character = artistID.charAt(i);
             if (character < 'A' || character > 'Z') {
                 return false;
             }
         }
+//        The second last character should be one of the following special characters: '!', '@', '#', '$'
+        // and the last character should be either '%' or '^'
         char secondLastCharacter = artistID.charAt(8);
         char lastCharacter = artistID.charAt(9);
 
@@ -141,10 +145,9 @@ public class Born2002UpdateSuccess {
     }
 
     public static boolean isValidArtistAddress(String artistAddress) {
-        // （|）
         String[] addressParts = artistAddress.split("\\|");
 
-        //
+        //Check if the split resulted in exactly 3 parts
         if (addressParts.length != 3) {
             return false;
         }
@@ -153,7 +156,7 @@ public class Born2002UpdateSuccess {
         String state = addressParts[1];
         String country = addressParts[2];
 
-        //
+        // Check if any of the parts (city, state, or country) is empty
         if (city.isEmpty() || state.isEmpty() || country.isEmpty()) {
             return false;
         }
@@ -162,14 +165,13 @@ public class Born2002UpdateSuccess {
     }
 
     public static boolean isValidArtistBirthDate(String artistBirthDate) {
-        //
+        //The desired format is "dd-MM-yyyy"
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         dateFormat.setLenient(false); //
 
         try {
-
+            // If the date is not in the "dd-MM-yyyy" format, this will throw a ParseException
             Date parsedDate = dateFormat.parse(artistBirthDate);
-
             String formattedDate = dateFormat.format(parsedDate);
             return formattedDate.equals(artistBirthDate);
         } catch (ParseException e) {
@@ -179,14 +181,14 @@ public class Born2002UpdateSuccess {
     }
 
     public static boolean isValidArtistBio(String artistBio) {
-
+// Calculate the word count of the biography after removing spaces.
         int bioLength = artistBio.replaceAll("\\s+", "").length();
 
-
+// Verify if the word count is within the specified range.
         return bioLength >= 10 && bioLength <= 30;
     }
     public static boolean isValidArtistOccupations(ArrayList<String> occupations) {
-
+// Verify there is at least one occupation and at most five occupations
         if (occupations.size() >= 1 && occupations.size() <= 5) {
             return true;
         } else {
@@ -196,20 +198,21 @@ public class Born2002UpdateSuccess {
 
     public static boolean isValidArtistAwards(ArrayList<String> awards) {
 
-        // 3 false
+        // should less than 3
         if (awards.size() > 3) {
             return false;
         }
 
-
+//        Start with 4 digits (representing a year)
         String pattern = "\\d{4},\\s.{4,}";
 
 
         Pattern regex = Pattern.compile(pattern);
 
-
+// Loop through each award in the list
         for (String award : awards) {
             Matcher matcher = regex.matcher(award);
+//            // If any award does not match the expected pattern, return false
             if (!matcher.matches()) {
                 return false;
             }
@@ -231,5 +234,6 @@ public class Born2002UpdateSuccess {
 
         return true;
     }
+
 
 }

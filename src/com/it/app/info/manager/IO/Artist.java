@@ -1,92 +1,77 @@
 package com.it.app.info.manager.IO;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class IoAdd {
+public class Artist {
+    private String id;
+    private String name;
+    private String address;
+    private String birthday;
+    private String bio;
+    private ArrayList<String> occupations;
+    private ArrayList<String> genres;
+    private ArrayList<String> awards;
 
-    public String addArtist(Artist artist) {
-        System.out.println("Trying to add artist..."); // Debug statement
-        if (meetAllAddCondi(artist)) {
-            System.out.println("Artist meets all conditions."); // Debug statement
-            try (FileWriter writer = new FileWriter("artists.txt", true)) {
-                writer.write(artist.toString() + "\n");
-//                System.out.println("Artist successfully added to the file.");
-                return "The book information can be added";
-            } catch (IOException e) {
-                e.printStackTrace();
-//                System.out.println("Failed to write the artist to the file due to an exception."); // Debug statement
-                return "The book information can be added";
-            }
-        } else {
-            return "The Artist can not be added";
-//            System.out.println("Artist does not meet all conditions."); // Debug statement
-//            return false;
-        }
+    public Artist(String id, String name, String address, String birthday, String bio, ArrayList<String> occupations, ArrayList<String> genres, ArrayList<String> awards) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.birthday = birthday;
+        this.bio = bio;
+        this.occupations = occupations;
+        this.genres = genres;
+        this.awards = awards;
     }
 
-    private boolean meetAllAddCondi(Artist artist) {
-        boolean idBoo=isValidArtistID(artist.id);
-        boolean addressBoo=isValidArtistAddress(artist.address);
-
-        boolean birthdayBoo=isValidArtistBirthDate(artist.birthday);
-        boolean bioBoo=isValidArtistBio(artist.bio);
-
-        boolean occupationsBoo=isValidArtistOccupations(artist.occupations);
-        boolean awardsBoo=isValidArtistAwards(artist.awards);
-        boolean genresBoo=isValidArtistGenres(artist.genres);
-
-        if(idBoo && addressBoo && birthdayBoo && bioBoo && occupationsBoo && awardsBoo && genresBoo) {
-            return true;
-        } else {
-            return false;
-        }
+    @Override
+    public String toString() {
+        return "Id: " + id + ", Name: " + name + ", Address: " + address + ", Birthday: " + birthday + ", Bio: " + bio + ", Occupations: " + occupations + ", Genres: " + genres + ", Awards: " + awards;
     }
 
-    public static void main(String[] args) {
-        ArrayList<String> occupations = new ArrayList<>(Arrays.asList("SongWriter", "PianoPlayer"));
-        ArrayList<String> genres = new ArrayList<>(Arrays.asList("Pop", "Classical"));
-        ArrayList<String> awards = new ArrayList<>(Arrays.asList("2022, Best Song Written"));
-
-        Artist artist = new Artist("999AAAAA!!", "chengji", "Melbourne|Victoria|Australia",
-                "01-01-2000", "He is a very good singer", occupations, genres, awards);
-
-        IoAdd ioAdd = new IoAdd();
-        ioAdd.addArtist(artist);
-    }
-
-    public  static class Artist {
-        private String id;
-        private String name;
-        private String address;
-        private String birthday;
-        private String bio;
-        private ArrayList<String> occupations;
-        private ArrayList<String> genres;
-        private ArrayList<String> awards;
-
-        public Artist(String id, String name, String address, String birthday, String bio, ArrayList<String> occupations, ArrayList<String> genres, ArrayList<String> awards) {
-            this.id = id;
-            this.name = name;
-            this.address = address;
-            this.birthday = birthday;
-            this.bio = bio;
-            this.occupations = occupations;
-            this.genres = genres;
-            this.awards = awards;
+    public String AddArtist ()
+    {
+        if (isValidArtistID(id))
+        {
+            return "The Artist can be added";
+        }
+        if (isValidArtistAddress(address))
+        {
+            return "The Artist can be added";
+        }
+        if (isValidArtistBirthDate(birthday))
+        {
+            return "The Artist can be added";
+        }
+        if (isValidArtistBio(bio))
+        {
+            return "The Artist can be added";
+        }
+        if (isValidArtistOccupations(occupations))
+        {
+            return "The Artist can be added";
+        }
+        if (isValidArtistAwards(awards))
+        {
+            return "The Artist can be added";
+        }
+        if (isValidArtistGenres(genres))
+        {
+            return "The Artist can be added";
         }
 
-        @Override
-        public String toString() {
-            return "Id: " + id + ", Name: " + name + ", Address: " + address + ", Birthday: " + birthday + ", Bio: " + bio + ", Occupations: " + occupations + ", Genres: " + genres + ", Awards: " + awards;
-        }
+//        if (countWord <2 || countWord >4)
+//        {
+//            return "The Artist cannot be added";
+//        }
+//        if ((bookType != "Kids" && (bookPrice <=5 || bookPrice >=250)) || (bookType
+//                == "Kids" && (bookPrice <=5 || bookPrice >=40)))
+//            return "The Artist cannot be added";
+        return "The Artist can not be added";
     }
 
     public static boolean isValidArtistID(String artistID) {
@@ -163,6 +148,7 @@ public class IoAdd {
 // Verify if the word count is within the specified range.
         return bioLength >= 10 && bioLength <= 30;
     }
+
     public static boolean isValidArtistOccupations(ArrayList<String> occupations) {
 // Verify there is at least one occupation and at most five occupations
         if (occupations.size() >= 1 && occupations.size() <= 5) {
@@ -196,7 +182,6 @@ public class IoAdd {
 
         return true;
     }
-
     public static boolean isValidArtistGenres(ArrayList<String> genres) {
         // Check if the artist is active in at least two genres and no more than five genres
         if (genres.size() < 2 || genres.size() > 5) {
@@ -210,6 +195,5 @@ public class IoAdd {
 
         return true;
     }
-
 
 }
