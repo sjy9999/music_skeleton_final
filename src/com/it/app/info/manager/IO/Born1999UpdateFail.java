@@ -79,7 +79,7 @@ public class Born1999UpdateFail {
         ArrayList<String> awards = new ArrayList<>(Arrays.asList("2022, Best Song Written"));
 
         Born1999UpdateFail.Artist artist = new Born1999UpdateFail.Artist("999AAAAA!!", "chengji", "Melbourne|Victoria|Australia",
-                "01-01-2000", "He is a very good singer", occupations, genres, awards);
+                "01-01-1999", "He is a very good singer", occupations, genres, awards);
 
         Born1999UpdateFail Born1999UpdateFail = new Born1999UpdateFail();
         Born1999UpdateFail.updateArtist(artist);

@@ -18,17 +18,18 @@ public class IoAdd {
             System.out.println("Artist meets all conditions."); // Debug statement
             try (FileWriter writer = new FileWriter("artists.txt", true)) {
                 writer.write(artist.toString() + "\n");
-//                System.out.println("Artist successfully added to the file.");
-                return "The book information can be added";
+                System.out.println("Artist successfully added to the file.");
+                return "The Artist can be added";
             } catch (IOException e) {
                 e.printStackTrace();
-//                System.out.println("Failed to write the artist to the file due to an exception."); // Debug statement
-                return "The book information can be added";
+                System.out.println("Failed to write the artist to the file due to an exception."); // Debug statement
+                return "The Artist can not be added";
             }
         } else {
             return "The Artist can not be added";
 //            System.out.println("Artist does not meet all conditions."); // Debug statement
 //            return false;
+//            return "The Artist can not be added";
         }
     }
 
